@@ -14,6 +14,13 @@ body {
       color: inherit;
     }
   }
+  input[type="text"] {
+    padding: 6px;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: inherit;
+    border: 1px solid black;
+  }
   button {
     background-color: transparent;
     padding: 8px 12px;
@@ -22,6 +29,7 @@ body {
     border: 1px solid black;
     border-radius: 2px;
     font-weight: 600;
+    margin: 16px 0;
     cursor: pointer;
     &:hover {
       background-color: black;

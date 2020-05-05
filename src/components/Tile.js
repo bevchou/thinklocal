@@ -5,7 +5,7 @@ const Tile = ({ title, date, imgSrc, toUrl }) => {
     <a href={process.env.PUBLIC_URL + "/group/" + toUrl}>
       <div className="tile">
         <div className="tileImage">
-          <img src={process.env.PUBLIC_URL + imgSrc} />
+          <img src={process.env.PUBLIC_URL + imgSrc} alt={title}/>
         </div>
         <div className="tileText">
           <div className="tileTitle">{title}</div>

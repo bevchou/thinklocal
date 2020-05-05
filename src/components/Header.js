@@ -3,21 +3,19 @@ import "./Header.scss";
 
 // user states for: signed in, not signed it
 // { userLoggedIn }
-const Header = ({isLoggedIn, isLoggedInState}) => {
-
-
+const Header = ({isLoggedInState, setIsLoggedInState}) => {
 
   const updateUserState = (e) => {
-    isLoggedInState(e.target.checked);
+    setIsLoggedInState(e.target.checked);
   }
   return (
     <div className="header">
       <div className="logo"><a href="/">ThinkLocal</a></div>
 
-      <div>toggle log in<input type="checkbox" checked={isLoggedIn} onChange={(e) => updateUserState(e)}/></div>
+      <div>toggle log in<input type="checkbox" checked={isLoggedInState} onChange={(e) => updateUserState(e)}/></div>
 
 
-      {isLoggedIn ? (
+      {isLoggedInState ? (
         <div className="userActions">
           <a href="/startgroup">+ Start a group</a>
           <a href="/groups">Your groups</a>

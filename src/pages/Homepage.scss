@@ -6,5 +6,15 @@
   .intro {
     width: 80%;
     max-width: 450px;
+    input{
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      button {
+        width: 140px;
+      }
+    }
   }
 }

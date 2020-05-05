@@ -14,18 +14,22 @@ import "./App.scss";
 const history = createBrowserHistory();
 
 function App() {
-  const [isLoggedIn, isLoggedInState] = useState(false);
+  const [isLoggedInState, setIsLoggedInState] = useState(false);
+
+  const [zipcodeState, setZipcodeState] = useState(null);
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} isLoggedInState={isLoggedInState} />
+      <Header isLoggedInState={isLoggedInState} setIsLoggedInState={setIsLoggedInState} />
 
       <Router history={history}>
         <Switch>
           <Route
             exact
             path="/"
-            component={() => <Homepage isLoggedIn={isLoggedIn} />}
+            component={() => (
+              <Homepage isLoggedInState={isLoggedInState} zipcodeState={zipcodeState} setZipcodeState={setZipcodeState}/>
+            )}
           />
           <Route exact path="/about" component={About} />
           <Route exact path="/event" component={Event} />
