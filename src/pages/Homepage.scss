@@ -1,0 +1,10 @@
+.homepage {
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .intro {
+    width: 80%;
+    max-width: 450px;
+  }
+}

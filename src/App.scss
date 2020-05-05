@@ -1,5 +1,39 @@
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:visited {
+      color: inherit;
+    }
+  }
+  button {
+    background-color: transparent;
+    padding: 8px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+    &.cta {
+      background: black;
+      color: white;
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
 }

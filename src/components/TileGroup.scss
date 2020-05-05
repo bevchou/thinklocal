@@ -1,0 +1,48 @@
+.tileGroup {
+  width: 100%;
+  margin-top: 60px;
+  .tileGroupTitle {
+    text-align: left;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+  .tiles {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    .tile {
+      &:hover {
+        opacity: 50%;
+      }
+      cursor: pointer;
+      width: 240px;
+      height: 340px;
+      border: 1px black solid;
+      margin: 12px;
+      .tileImage {
+        border-bottom: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 240px;
+        overflow: hidden;
+        img {
+          flex-shrink: 0;
+          min-width: 100%;
+          min-height: 100%;
+        }
+      }
+      .tileText {
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .tileTitle {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

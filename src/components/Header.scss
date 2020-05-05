@@ -1,9 +1,18 @@
 .header {
   width: 100%;
   box-sizing: border-box;
-  padding: 12px;
+  padding: 0 24px;
+  height: 44px;
   top: 0;
-  background-color: paleturquoise;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+}
+.logo {
+  font-size: 24px;
+  font-family: sans-serif;
+}
+.userActions a {
+  padding: 0 20px;
 }
