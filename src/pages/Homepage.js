@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Homepage.scss";
 import data from "../data/dummyData.json";
 
@@ -33,7 +33,7 @@ const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
           that makes civic engagement easier. Organize or find existing
           organizations and causes in your community.
         </p>
-        {zipcodeState ? (
+        {zipcodeState || isLoggedInState ? (
           <div />
         ) : (
           <div>
@@ -59,11 +59,11 @@ const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
         )}
       </div>
       <TileGroup
-        groupName={(zipcodeState ? "Local " : "") + "Events"}
+        groupName={(zipcodeState || isLoggedInState ? "Local " : "") + "Events"}
         tileArray={data.events}
       />
       <TileGroup
-        groupName={(zipcodeState ? "Local " : "") + "Groups"}
+        groupName={(zipcodeState || isLoggedInState ? "Local " : "") + "Groups"}
         tileArray={data.groups}
       />
     </div>

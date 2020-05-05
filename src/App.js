@@ -4,6 +4,8 @@ import { createBrowserHistory } from "history";
 
 import Homepage from "./pages/Homepage";
 import Event from "./pages/Event";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import CommunityProfile from "./pages/CommunityProfile";
 import About from "./pages/About";
 
@@ -32,6 +34,8 @@ function App() {
             )}
           />
           <Route exact path="/about" component={About} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
           <Route exact path="/event" component={Event} />
           <Route exact path="/community" component={CommunityProfile} />
         </Switch>
