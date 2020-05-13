@@ -8,7 +8,14 @@ const TileGroup = ({ groupName, tileArray }) => {
       <div className="tileGroupTitle">{groupName}</div>
       <div className="tiles">
         {tileArray.map((tile) => (
-          <Tile title={tile.title} key={tile.title+tile.date} date={tile.date} imgSrc={tile.imgSrc} />
+          <Tile
+            title={tile.title}
+            key={tile.title + tile.date}
+            date={tile.date}
+            imgSrc={tile.imgSrc}
+            toUrl={tile.toUrl}
+            eventId={tile.id}
+          />
         ))}
       </div>
       <button className="showMoreButton">Show more</button>

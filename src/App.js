@@ -36,7 +36,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/event" component={Event} />
+          <Route exact path="/event/:eventId" component={Event} />
           <Route exact path="/community" component={CommunityProfile} />
         </Switch>
       </Router>

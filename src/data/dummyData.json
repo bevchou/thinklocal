@@ -1,30 +1,51 @@
 {
   "events": [
     {
+      "id": 1,
       "title": "BedstuyStrong COVID Relief Bike Delivery Orientation",
+      "community": "BedstuyStrong",
+      "location": "Zoom",
       "date": "April 30, 2020 17:00:00",
-      "imgSrc": "/assets/events/1.jpg"
+      "imgSrc": "/assets/events/1.jpg",
+      "about": "lorem ipsum long paragraph here",
+      "memberIds": [1, 2, 3],
+      "toUrl": "/event"
     },
     {
+      "id": 2,
       "title": "Equitable Internet Initative Training",
+      "community": "Detroit Community Technology Project",
+      "location": "Online",
       "date": "May 14, 2020 17:00:00",
-      "imgSrc": "/assets/events/2.jpg"
+      "about": "lorem ipsum long paragraph here",
+      "imgSrc": "/assets/events/2.jpg",
+      "memberIds": [1, 2, 3],
+      "toUrl": "/event"
     },
     {
+      "id": 3,
       "title": "PPE Collection for Medical Workers",
+      "community": "Your Neighbors",
+      "location": "My House",
       "date": "May 14, 2020 17:00:00",
-      "imgSrc": "/assets/events/3.jpg"
+      "about": "lorem ipsum long paragraph here",
+      "imgSrc": "/assets/events/3.jpg",
+      "memberIds": [1, 2, 3],
+      "toUrl": "/event"
     }
   ],
   "groups": [
     { "title": "BedstuyStrong",
-      "imgSrc": "/assets/groups/1.jpg"
+      "imgSrc": "/assets/groups/1.jpg",
+      "toUrl": "/community"
     },
     { "title": "Detroit Community Technology Project",
-      "imgSrc": "/assets/groups/2.jpg"
+      "imgSrc": "/assets/groups/2.jpg",
+      "toUrl": "/community"
     },
     { "title": "FaceShieldsNYC",
-      "imgSrc": "/assets/groups/3.jpg"
+      "imgSrc": "/assets/groups/3.jpg",
+      "toUrl": "/community"
     }
   ]
 }
