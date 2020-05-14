@@ -2,7 +2,7 @@ import React from "react";
 
 const Tile = ({ title, date, imgSrc, toUrl, eventId }) => {
   return (
-    <a href={process.env.PUBLIC_URL + toUrl + "/" + eventId}>
+    <a href={ (toUrl ? toUrl : "") + "/" + (eventId ? eventId : "") }>
       <div className="tile">
         <div className="tileImage">
           <img src={process.env.PUBLIC_URL + imgSrc} alt={title} />

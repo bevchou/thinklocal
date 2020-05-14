@@ -54,24 +54,62 @@
     }
   ],
   "groups": [
-    { "title": "BedstuyStrong",
+    {
+      "title": "BedstuyStrong",
+      "foundingDate": "5/14/2020",
       "imgSrc": "/assets/groups/1.jpg",
-      "about": "lorem ipsum",
-      "initiatives":[
+      "about": "We are a group of local... Our mission is to... We hope to impact the community through... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Please join us! ",
+      "initiatives": [
         {
-          "title": "Bike Deliveries",
-          "imgSrc": "/assets/initiatives/1.jpg"
+          "title": "Bike Delivery Initiative",
+          "blurb": "Help vulnerable neighbors during shelter-in-place to get groceries.",
+          "imgSrc": "/assets/initiatives/1.jpg",
+          "events": [1, 2]
+        },
+        {
+          "title": "Face Shield Distribution Initiative",
+          "blurb": "Ensure everyone has access to the proper PPE needed for social distancing.",
+          "imgSrc": "/assets/initiatives/2.jpg",
+          "events": [1, 2]
         }
       ],
-      "toUrl": "/community"
+      "toUrl": "/group/bedstuystrong"
     },
-    { "title": "Detroit Community Technology Project",
+    {
+      "title": "Detroit Community Technology Project",
+      "foundingDate": "5/14/2020",
       "imgSrc": "/assets/groups/2.jpg",
-      "toUrl": "/community"
+      "about": "We are a group of local... Our mission is to... We hope to impact the community through... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Please join us! ",
+      "initiatives": [
+        {
+          "title": "Equitable Internet Initiative",
+          "blurb": "Building our own internet infrastructure.",
+          "imgSrc": "/assets/initiatives/1.jpg",
+          "events": [1, 2]
+        }
+      ],
+      "toUrl": "/group/detroit-community-technology-project"
     },
-    { "title": "FaceShieldsNYC",
+    {
+      "title": "Your Neighbors",
+      "foundingDate": "5/14/2020",
       "imgSrc": "/assets/groups/3.jpg",
-      "toUrl": "/community"
+      "about": "We are a group of local... Our mission is to... We hope to impact the community through... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Please join us! ",
+      "initiatives": [
+        {
+          "title": "Bike Delivery Initiative",
+          "blurb": "Help vulnerable neighbors during shelter-in-place to get groceries.",
+          "imgSrc": "/assets/initiatives/1.jpg",
+          "events": [1, 2]
+        },
+        {
+          "title": "Face Shield Distribution Initiative",
+          "blurb": "Ensure everyone has access to the proper PPE needed for social distancing.",
+          "imgSrc": "/assets/initiatives/2.jpg",
+          "events": [1, 2]
+        }
+      ],
+      "toUrl": "/group/your-neighbors"
     }
   ]
 }

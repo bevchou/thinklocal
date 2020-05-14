@@ -10,7 +10,7 @@ const TileGroup = ({ groupName, tileArray }) => {
         {tileArray.map((tile) => (
           <Tile
             title={tile.title}
-            key={tile.title + tile.date}
+            key={tile.title + tile.id}
             date={tile.date}
             imgSrc={tile.imgSrc}
             toUrl={tile.toUrl}
