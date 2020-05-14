@@ -12,6 +12,7 @@
     width: 100%;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
     .tile {
       &:hover {
         opacity: 50%;
