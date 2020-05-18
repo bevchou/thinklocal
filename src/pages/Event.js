@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./Event.scss";
 import data from "../data/dummyData.json";
 import { slugify } from "../slugify";
@@ -25,9 +27,9 @@ const Event = (eventId) => {
         <div className="title">{eventObj.title}</div>
         <div className="community">
           by{" "}
-          <a href={"/group/" + slugify(eventObj.community)}>
+          <Link to={"/group/" + slugify(eventObj.community)}>
             {eventObj.community}
-          </a>
+          </Link>
         </div>
         ˘
         <div className="details">

@@ -15,7 +15,7 @@
     flex-wrap: wrap;
     .tile {
       &:hover {
-        opacity: 50%;
+        opacity: 0.5;
       }
       cursor: pointer;
       width: 240px;

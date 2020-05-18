@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./Homepage.scss";
 import data from "../data/dummyData.json";
 
@@ -24,21 +25,9 @@ const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
     }
   };
 
-  const requestUrl =
-    "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/events?format=json";
-  fetch(requestUrl, {
-    // method: "GET",
-    mode: "no-cors",
-    // headers: {
-    //   "Content-Type": "application/json",
-    // }
-  })
-    .then((response) => {
-      console.log("Success:", response);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  // fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/events?format=json')
+  // .then(response => response.json())
+  // .then(data => console.log(data));
 
   return (
     <div className="page">

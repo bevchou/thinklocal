@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./SignInSignUp.scss";
 
 import Form from "react-bootstrap/Form";
@@ -10,7 +11,7 @@ const SignUp = () => {
       <h1>Sign Up</h1>
 
       <p>
-        (or <a href="/signin">log into your account!</a>)
+        (or <Link to="/signin">log into your account!</Link>)
       </p>
 
       <Form>

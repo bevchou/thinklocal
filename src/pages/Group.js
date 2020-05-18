@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./Group.scss";
 import data from "../data/dummyData.json";
 import { slugify } from "../slugify";
@@ -18,8 +20,8 @@ const Group = (name) => {
         <div className="aboutGroup">{groupObj.about}</div>
         {groupObj.initiatives.map((initiative) => (
           <div className="initiative" key={initiative.title}>
-            <a
-              href={
+            <Link
+              to={
                 "/group/" +
                 slugify(groupObj.title) +
                 "/" +
@@ -36,7 +38,7 @@ const Group = (name) => {
                 <div className="initiativeTitle">{initiative.title}</div>
                 {initiative.blurb}
               </div>
-            </a>
+            </Link>
           </div>
         ))}
       </div>

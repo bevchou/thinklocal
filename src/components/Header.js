@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./Header.scss";
 
 // user states for: signed in, not signed it
@@ -7,10 +8,11 @@ const Header = ({ isLoggedInState, setIsLoggedInState }) => {
   const updateUserState = (e) => {
     setIsLoggedInState(e.target.checked);
   };
+  const history = useHistory();
   return (
     <div className="header">
       <div className="logo">
-        <a href="/">ThinkLocal</a>
+        <Link to="/">ThinkLocal</Link>
       </div>
 
       <div>
@@ -24,17 +26,17 @@ const Header = ({ isLoggedInState, setIsLoggedInState }) => {
 
       {isLoggedInState ? (
         <div className="userActions">
-          <a href="/startgroup">+ Start a group</a>
-          <a href="/groups">Your groups</a>
-          <a href="/profile">Profile</a>
-          <a href="/">Log out</a>
+          <Link to="/startgroup">+ Start a group</Link>
+          <Link to="/groups">Your groups</Link>
+          <Link to="/profile">Profile</Link>
+          <Link to="/">Log out</Link>
         </div>
       ) : (
         <div className="userActions">
-          <a href="/about">About ThinkLocal</a>
+          <Link to="/about">About ThinkLocal</Link>
           <button
             onClick={() => {
-              window.location = "/signin";
+              history.push("/signin");
             }}
           >
             Sign In / Sign Up

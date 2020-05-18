@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./SignInSignUp.scss";
 
 import Form from "react-bootstrap/Form";
@@ -22,35 +24,33 @@ const SignIn = () => {
       <h1>Sign In</h1>
 
       <p>
-        (or <a href="/signup">create an account!</a>)
+        (or <Link to="/signup">create an account!</Link>)
       </p>
 
+      <Form>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder=""
+            //  onChange={(e) => handleInput(e)}
+          />
+        </Form.Group>
 
-        <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              placeholder=""
-              //  onChange={(e) => handleInput(e)}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              placeholder=""
-              // onChange={(e) => handleInput(e)}
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Sign In
-          </Button>
-        </Form>
-
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder=""
+            // onChange={(e) => handleInput(e)}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Sign In
+        </Button>
+      </Form>
     </div>
   );
 };

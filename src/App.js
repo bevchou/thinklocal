@@ -22,30 +22,29 @@ function App() {
 
   return (
     <>
-      <Header
-        isLoggedInState={isLoggedInState}
-        setIsLoggedInState={setIsLoggedInState}
-      />
-
-      <Router history={history}>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={() => (
-              <Homepage
-                isLoggedInState={isLoggedInState}
-                zipcodeState={zipcodeState}
-                setZipcodeState={setZipcodeState}
-              />
-            )}
+      <Router history={history} basename="/demo">
+          <Header
+            isLoggedInState={isLoggedInState}
+            setIsLoggedInState={setIsLoggedInState}
           />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/event/:eventId" component={Event} />
-          <Route exact path="/group/:name" component={Group} />
-        </Switch>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={() => (
+                <Homepage
+                  isLoggedInState={isLoggedInState}
+                  zipcodeState={zipcodeState}
+                  setZipcodeState={setZipcodeState}
+                />
+              )}
+            />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/signin" component={SignIn} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/event/:eventId" component={Event} />
+            <Route exact path="/group/:name" component={Group} />
+          </Switch>
       </Router>
     </>
   );
