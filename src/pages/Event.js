@@ -41,7 +41,10 @@ const Event = (eventId) => {
           <button onClick={() => handleShareEvent()}>Share</button>
         </div>
         <div className="mainImage">
-          <img src={process.env.PUBLIC_URL + eventObj.imgSrc} alt="event header" />
+          <img
+            src={process.env.PUBLIC_URL + eventObj.imgSrc}
+            alt="event header"
+          />
         </div>
         <div className="eventInfo">
           <div className="eventAbout">
@@ -58,7 +61,7 @@ const Event = (eventId) => {
                     {member}
                   </div>
                 );
-              } else {
+              } else if (i === 3) {
                 return (
                   <div
                     className="showMemberList"
@@ -68,6 +71,8 @@ const Event = (eventId) => {
                     + {eventObj.memberIds.length - 3} others
                   </div>
                 );
+              } else {
+                return null;
               }
             })}
             {/* May need to have user ids, and then query them to get the image and names? */}

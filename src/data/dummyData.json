@@ -21,7 +21,7 @@
       "date": "May 14, 2020 17:00:00",
       "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "imgSrc": "/assets/events/2.jpg",
-      "memberIds": [1, 2, 3],
+      "memberIds": [1, 2, 3, 4, 5, 6, 7],
       "initiative": null,
       "organizer": 2,
       "toUrl": "/event"
@@ -34,7 +34,7 @@
       "date": "May 14, 2020 17:00:00",
       "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "imgSrc": "/assets/events/3.jpg",
-      "memberIds": [1, 2, 3, 4],
+      "memberIds": [1, 2, 3, 4, 5, 6, 7],
       "initiative": null,
       "organizer": 3,
       "toUrl": "/event"
@@ -47,7 +47,7 @@
       "date": "May 14, 2020 17:00:00",
       "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "imgSrc": "/assets/events/3.jpg",
-      "memberIds": [1, 2, 3],
+      "memberIds": [1, 2, 3, 4, 5, 6, 7, 8],
       "organizer": 4,
       "initiative": null,
       "toUrl": "/event"
