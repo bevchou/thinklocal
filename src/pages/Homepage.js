@@ -12,15 +12,16 @@ const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
   const [groupsLoading, setGroupsLoading] = useState(true);
   const [eventsLoading, setEventsLoading] = useState(true);
 
+  const fetchEvents = async () => {
+    const apiCall = await fetch('http://localhost:8000/api/events?format=json');
+    const events = await apiCall.json();
+    setEvents(events);
+    setEventsLoading(false);
+    console.log(events);
+  }
   useEffect(() => {
-    fetch('http://localhost:8000/api/events?format=json')
-    .then(response => response.json())
-    .then(data => {
-      setEvents(data);
-      setEventsLoading(false);
-    })
-    .catch(error => console.log(error));
-  }, [events]);
+    fetchEvents();
+  }, []);
 
   useEffect(() => {
     fetch('http://localhost:8000/api/groups?format=json')
@@ -30,7 +31,7 @@ const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
       setGroupsLoading(false);
     })
     .catch(error => console.log(error));
-  }, [groups]);
+  }, []);
   
   const getZipcodeInput = (e) => {
     zipcodeInput = e.target.value;

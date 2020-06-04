@@ -12,15 +12,15 @@ const Event = (eventId) => {
   const [eventLoading, setEventLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/events/'+id+'/?format=json')
+    fetch('http://localhost:8000/api/events/'+id)
     .then(response => response.json())
     .then(data => {
       setEvent(data);
       setEventLoading(false);
       console.log(data);
     })
-    .catch(error => console.log(error));
-  }, [eventObj]);
+    .catch(error => console.error(error));
+  }, []);
 
   const handleJoinEvent = () => {
     console.log("you joined the event");
