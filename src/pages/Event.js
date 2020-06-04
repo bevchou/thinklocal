@@ -1,13 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 
 import "./Event.scss";
-import data from "../data/dummyData.json";
+// import data from "../data/dummyData.json";
 import { slugify } from "../slugify";
 
 const Event = (eventId) => {
   let id = eventId.match.params.eventId;
-  let eventObj = data.events.find((event) => event.id === +id);
+  // let eventObj = data.events.find((event) => event.id === +id);
+  const [eventObj, setEvent] = useState([]);
+  const [eventLoading, setEventLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/events/'+id+'/?format=json')
+    .then(response => response.json())
+    .then(data => {
+      setEvent(data);
+      setEventLoading(false);
+      console.log(data);
+    })
+    .catch(error => console.log(error));
+  }, [eventObj]);
 
   const handleJoinEvent = () => {
     console.log("you joined the event");
@@ -21,20 +34,23 @@ const Event = (eventId) => {
     console.log("modal to show member list");
   };
 
+
+  
   return (
     <div className="page">
       <div className="event">
-        <div className="title">{eventObj.title}</div>
+        <div className="title">{eventObj.event_title}</div>
         <div className="community">
           by{" "}
-          <Link to={"/group/" + slugify(eventObj.community)}>
-            {eventObj.community}
+          {/* <Link to={"/group/" + slugify(eventObj.group)}> */}
+          <Link to={"/group/"+ eventObj.group}>
+            {eventObj.group}
           </Link>
         </div>
         ˘
         <div className="details">
           {" "}
-          {eventObj.date} at {eventObj.location}
+          {eventObj.event_date} at {eventObj.location}
         </div>
         <div className="callToAction">
           <button onClick={() => handleJoinEvent()}>Join</button>
@@ -42,18 +58,19 @@ const Event = (eventId) => {
         </div>
         <div className="mainImage">
           <img
-            src={process.env.PUBLIC_URL + eventObj.imgSrc}
+            // src={process.env.PUBLIC_URL + eventObj.imgSrc}
+            src={"https://picsum.photos/800"}
             alt="event header"
           />
         </div>
         <div className="eventInfo">
           <div className="eventAbout">
             <h4>About the Event</h4>
-            <p>{eventObj.about}</p>
+            <p>{eventObj.event_description}</p>
           </div>
           <div className="attending">
             <h4>Members Joined</h4>
-            {eventObj.memberIds.map((member, i) => {
+            {/* {eventObj.memberIds.map((member, i) => {
               if (i < 3) {
                 return (
                   <div className="member" key={member}>
@@ -74,13 +91,13 @@ const Event = (eventId) => {
               } else {
                 return null;
               }
-            })}
+            })} */}
             {/* May need to have user ids, and then query them to get the image and names? */}
           </div>
         </div>
         <div className="member">
           <div className="organizerImg"></div>
-          {eventObj.organizer} from {eventObj.community}
+          {eventObj.event_creator} from {eventObj.group}
         </div>
         {/* May need to have user ids, and then query them to get the image and names? */}
         <div className="callToAction">
