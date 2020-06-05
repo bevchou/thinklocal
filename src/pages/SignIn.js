@@ -22,7 +22,37 @@ const SignIn = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('authenticate/sign in')
+    const options = {
+      method: "POST",
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginInfoState)
+    }
     //ADD CODE TO AUTHENTICATE
+    fetch("http://127.0.0.1:8000/api/users/check_password/",options)
+    .then((response) => {
+      console.log(response);
+      if(response.ok){
+        return response.json();
+      }else{
+        throw new Error("Error in authentication")
+      }
+    })
+    .then(status => {
+      console.log(status);
+      switch(status){
+        case 'password does not match':
+          console.log(status);
+          break;
+        case 'password match':
+          console.log(status);
+          break;
+        default:
+          console.log(status);
+      }
+    })
   };
 
   return (

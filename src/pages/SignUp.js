@@ -56,7 +56,8 @@ const SignUp = () => {
     e.preventDefault();
     //get the user list to determine user id
     fetch(
-      "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users?format=json"
+      // "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users?format=json"
+      "http://localhost:8000/api/users/"
     )
       .then((response) => response.json())
       .then((userList) => {
@@ -67,16 +68,26 @@ const SignUp = () => {
 
         // POST new user data
         fetch(
-          "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/",
+          // "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/",
+          "http://localhost:8000/api/users/",
           {
             method: "POST",
             headers: {
+              "Accept": "application/json, text/plain, */*",
               "Content-Type": "application/json",
             },
             body: JSON.stringify(formState),
           }
         )
-          .then((response) => response.json())
+          .then((response) => {
+            console.log(response)
+              if(response.ok){
+                return response.json();
+              }else{
+                throw new Error("something went wrong");
+              }
+            }
+          )
           .then((data) => {
             console.log("Success:", data);
           })
@@ -97,7 +108,7 @@ const SignUp = () => {
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Form.Group controlId="formName">
           <Form.Label>Name</Form.Label>
-          <Form.Control name="name" onChange={(e) => handleInput(e)} />
+          <Form.Control name="user_name" onChange={(e) => handleInput(e)} />
         </Form.Group>
 
         <Form.Group controlId="formBasicEmail">
