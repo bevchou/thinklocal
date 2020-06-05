@@ -3,24 +3,56 @@ import { Link } from "react-router-dom";
 
 import "./Event.scss";
 // import data from "../data/dummyData.json";
-import { slugify } from "../slugify";
+// import { slugify } from "../slugify";
 
 const Event = (eventId) => {
-  let id = eventId.match.params.eventId;
+  let id = parseInt(eventId.match.params.eventId);
   // let eventObj = data.events.find((event) => event.id === +id);
   const [eventObj, setEvent] = useState([]);
   const [eventLoading, setEventLoading] = useState(true);
+  const [group, setGroup] = useState('');
+  const [groupLoading, setGroupLoading] = useState(true);
+  const [eventCreator, setEventCreator] = useState('');
+  const [eventCreatorLoading, setEventCreatorLoading] = useState(true);
+  const [attendee, setAttendee] = useState([]);
+  const [attendeeLoading, setAttendeeLoading] = useState(true);
+
+  const fetchInfo = async () => {
+    const apiCall = await fetch('http://localhost:8000/api/events/'+id);
+    const event = await apiCall.json();
+    const groupCall = await fetch('http://localhost:8000/api/groups/'+event.group);
+    const group = await groupCall.json();
+    const creatorCall = await fetch('http://localhost:8000/api/users/'+event.event_creator);
+    const eventCreator = await creatorCall.json();
+    const attendeeCall = await fetch('http://localhost:8000/api/attendees/');
+    //TODO: getting the whole list, need to improve this
+    const attendeeList = await attendeeCall.json();
+    const attendee = attendeeList.filter(e => e.event === id)
+
+    setGroup(group);
+    setGroupLoading(false);
+
+    setEvent(event);
+    setEventLoading(false);
+
+    setEventCreator(eventCreator);
+    setEventCreatorLoading(false);
+
+    setAttendee(attendee);
+    setAttendeeLoading(false);
+    console.log(attendeeList);
+    console.log(attendee);
+    
+  }
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/events/'+id)
-    .then(response => response.json())
-    .then(data => {
-      setEvent(data);
-      setEventLoading(false);
-      console.log(data);
-    })
-    .catch(error => console.error(error));
+    fetchInfo();
   }, []);
+
+  if( eventLoading === true || groupLoading === true 
+    || eventCreatorLoading === true || attendeeLoading === true){
+    return(<div>Loading</div>)
+  }
 
   const handleJoinEvent = () => {
     console.log("you joined the event");
@@ -44,7 +76,7 @@ const Event = (eventId) => {
           by{" "}
           {/* <Link to={"/group/" + slugify(eventObj.group)}> */}
           <Link to={"/group/"+ eventObj.group}>
-            {eventObj.group}
+            {group.group_name}
           </Link>
         </div>
         ˘
@@ -70,10 +102,10 @@ const Event = (eventId) => {
           </div>
           <div className="attending">
             <h4>Members Joined</h4>
-            {/* {eventObj.memberIds.map((member, i) => {
+            {/* {attendee.map((member, i) => {
               if (i < 3) {
                 return (
-                  <div className="member" key={member}>
+                  <div className="member" key={member.id}>
                     <div className="memberImg"></div>
                     {member}
                   </div>
@@ -97,7 +129,7 @@ const Event = (eventId) => {
         </div>
         <div className="member">
           <div className="organizerImg"></div>
-          {eventObj.event_creator} from {eventObj.group}
+          {eventCreator.user_name} from {group.group_name}
         </div>
         {/* May need to have user ids, and then query them to get the image and names? */}
         <div className="callToAction">

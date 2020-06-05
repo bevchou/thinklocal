@@ -19,18 +19,18 @@ const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
     setEventsLoading(false);
     console.log(events);
   }
-  useEffect(() => {
-    fetchEvents();
-  }, []);
+
+  const fetchGroups = async () =>{
+    const apiCall = await fetch('http://localhost:8000/api/groups?format=json');
+    const groups = await apiCall.json();
+    setGroups(groups);
+    setGroupsLoading(false);
+    console.log(groups);
+  }
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/groups?format=json')
-    .then(response => response.json())
-    .then(data => {
-      setGroups(data);
-      setGroupsLoading(false);
-    })
-    .catch(error => console.log(error));
+    fetchEvents();
+    fetchGroups();
   }, []);
   
   const getZipcodeInput = (e) => {
