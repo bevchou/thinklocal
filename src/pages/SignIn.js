@@ -70,8 +70,7 @@ const SignIn = () => {
     <div className="signin">
       <h1>Sign In</h1>
       <p>
-        (or <Link to="/signup">create an account!</Link>
-        {JSON.stringify(user)})
+        (or <Link to="/signup">create an account!</Link>)
       </p>
 
       <Form onSubmit={(e) => handleSubmit(e)}>
