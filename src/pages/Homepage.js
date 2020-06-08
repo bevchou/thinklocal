@@ -1,16 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { UserContext } from "../UserContext";
 
 import "./Homepage.scss";
 // import data from "../data/dummyData.json";
 
 import TileGroup from "../components/TileGroup";
 
-const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
+const Homepage = ({zipcodeState, setZipcodeState }) => {
   let zipcodeInput;
   const [events, setEvents] = useState([]);
   const [groups, setGroups] = useState([]);
   const [groupsLoading, setGroupsLoading] = useState(true);
   const [eventsLoading, setEventsLoading] = useState(true);
+
+  const {isLoggedInState, setIsLoggedInState, user, setUser} = useContext(UserContext);
 
   const fetchEvents = async () => {
     const apiCall = await fetch('http://localhost:8000/api/events?format=json');

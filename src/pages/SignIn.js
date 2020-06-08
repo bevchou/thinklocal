@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
 import "./SignInSignUp.scss";
 
@@ -12,6 +13,8 @@ const SignIn = () => {
     password: null,
   });
 
+  const {isLoggedInState, setIsLoggedInState, user, setUser} = useContext(UserContext);
+
   const handleInput = (e) => {
     setLoginInfoState({
       ...loginInfoState,
@@ -19,9 +22,9 @@ const SignIn = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log('authenticate/sign in')
+    let responseBody; 
     const options = {
       method: "POST",
       headers: {
@@ -31,7 +34,7 @@ const SignIn = () => {
       body: JSON.stringify(loginInfoState)
     }
     //ADD CODE TO AUTHENTICATE
-    fetch("http://127.0.0.1:8000/api/users/check_password/",options)
+    const loginCall = await fetch("http://127.0.0.1:8000/api/users/check_password/",options)
     .then((response) => {
       console.log(response);
       if(response.ok){
@@ -42,25 +45,34 @@ const SignIn = () => {
     })
     .then(status => {
       console.log(status);
-      switch(status){
-        case 'password does not match':
-          console.log(status);
-          break;
-        case 'password match':
-          console.log(status);
-          break;
-        default:
-          console.log(status);
-      }
-    })
+      responseBody = status
+    });
+
+    switch(responseBody.status){
+      case "password does not match":
+        console.log(responseBody);
+        // setIsLoggedInState(false);
+        break;
+      case "password matches":
+        console.log(responseBody);
+        //update the user state to loggedIn
+        setIsLoggedInState(true);
+        console.log(JSON.stringify(responseBody))
+        setUser(JSON.stringify(responseBody))
+        break;
+      default:
+        console.log(responseBody);
+        // setIsLoggedInState(false);
+    }
+
   };
 
   return (
     <div className="signin">
       <h1>Sign In</h1>
-
       <p>
-        (or <Link to="/signup">create an account!</Link>)
+        (or <Link to="/signup">create an account!</Link>
+        {JSON.stringify(user)})
       </p>
 
       <Form onSubmit={(e) => handleSubmit(e)}>
