@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext} from "react";
+import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 import "./SignInSignUp.scss";
@@ -14,6 +14,7 @@ const SignIn = () => {
   });
 
   const {isLoggedInState, setIsLoggedInState, user, setUser} = useContext(UserContext);
+  const history = useHistory();
 
   const handleInput = (e) => {
     setLoginInfoState({
@@ -51,7 +52,6 @@ const SignIn = () => {
     switch(responseBody.status){
       case "password does not match":
         console.log(responseBody);
-        // setIsLoggedInState(false);
         break;
       case "password matches":
         console.log(responseBody);
@@ -59,12 +59,11 @@ const SignIn = () => {
         setIsLoggedInState(true);
         console.log(JSON.stringify(responseBody))
         setUser(JSON.stringify(responseBody))
+        history.push("/");
         break;
       default:
         console.log(responseBody);
-        // setIsLoggedInState(false);
     }
-
   };
 
   return (
