@@ -10,6 +10,7 @@ import Group from "./pages/Group";
 import About from "./pages/About";
 
 import Header from "./components/Header";
+import Cookies from 'js-cookie';
 
 import { UserContext } from "./UserContext";
 import "./App.scss";
@@ -17,9 +18,9 @@ import "./App.scss";
 const history = createBrowserHistory();
 
 function App() {
-  const [isLoggedInState, setIsLoggedInState] = useState(false);
+  const [isLoggedInState, setIsLoggedInState] = useState(Cookies.get('thinklocal'));
   const [zipcodeState, setZipcodeState] = useState(null);
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(JSON.parse(Cookies.get('thinklocal')));
 
   const providerValue = useMemo(() => ({ 
     isLoggedInState, 

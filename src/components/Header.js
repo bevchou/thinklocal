@@ -2,26 +2,26 @@ import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./Header.scss";
 import { UserContext } from "../UserContext";
+import Cookies from 'js-cookie';
 
 const Header = () => {
   const updateUserState = (e) => {
     setIsLoggedInState(e.target.checked);
   };
   const history = useHistory();
-
   const {isLoggedInState, setIsLoggedInState, user, setUser} = useContext(UserContext);
+  
   const handleLogout = (e) => {
     e.preventDefault();
-    console.log("logged out");
     setUser(null);
     setIsLoggedInState(false);
+    Cookies.remove("thinklocal");
   }
   return (
 
     <div className="header">
       <div className="logo">
         <Link to="/">ThinkLocal</Link>
-        {console.log("state", isLoggedInState)}
       </div>
 
       {/* <div>

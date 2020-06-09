@@ -67,6 +67,8 @@ const Homepage = ({zipcodeState, setZipcodeState }) => {
             Want to help but don’t know where to start? ThinkLocal is a platform
             that makes civic engagement easier. Organize or find existing
             organizations and causes in your community.
+            {console.log("UserContext", UserContext)
+            }
           </p>
           {zipcodeState || isLoggedInState ? (
             <div />

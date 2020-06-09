@@ -1,6 +1,7 @@
 import React, { useState, useContext} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../UserContext";
+import Cookies from 'js-cookie';
 
 import "./SignInSignUp.scss";
 
@@ -13,7 +14,7 @@ const SignIn = () => {
     password: null,
   });
 
-  const {isLoggedInState, setIsLoggedInState, user, setUser} = useContext(UserContext);
+  const {setIsLoggedInState, setUser} = useContext(UserContext);
   const history = useHistory();
 
   const handleInput = (e) => {
@@ -59,6 +60,7 @@ const SignIn = () => {
         setIsLoggedInState(true);
         console.log(JSON.stringify(responseBody))
         setUser(JSON.stringify(responseBody))
+        Cookies.set("thinklocal", JSON.stringify(responseBody), { expires: 2});
         history.push("/");
         break;
       default:

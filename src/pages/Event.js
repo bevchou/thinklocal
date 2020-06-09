@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect, useContext} from "react";
+import { Link, useHistory } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
 import "./Event.scss";
 // import data from "../data/dummyData.json";
@@ -16,6 +17,9 @@ const Event = (eventId) => {
   const [eventCreatorLoading, setEventCreatorLoading] = useState(true);
   const [attendee, setAttendee] = useState([]);
   const [attendeeLoading, setAttendeeLoading] = useState(true);
+
+  const {isLoggedInState, user} = useContext(UserContext);
+  const history = useHistory();
 
   const fetchInfo = async () => {
     const apiCall = await fetch('http://localhost:8000/api/events/'+id);
@@ -55,7 +59,34 @@ const Event = (eventId) => {
   }
 
   const handleJoinEvent = () => {
-    console.log("you joined the event");
+    if(isLoggedInState){
+      const userJson = JSON.parse(user);
+      console.log(user);
+      
+      const eventUserInfo = {
+        "event": id,
+        "user": userJson.pk
+      }
+      console.log(eventUserInfo);
+      fetch("http://localhost:8000/api/attendees/",
+      {
+        method: "POST",
+        headers: {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(eventUserInfo),
+      })
+      .then((response) => {
+        if(response.ok){
+          return response.json();
+        }else{
+          throw new Error("something went wrong");
+        }
+      });
+    }else{
+      history.push("/Signin");
+    }
   };
 
   const handleShareEvent = () => {
@@ -65,8 +96,6 @@ const Event = (eventId) => {
   const handleShowMemberList = () => {
     console.log("modal to show member list");
   };
-
-
   
   return (
     <div className="page">
