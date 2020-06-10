@@ -28,10 +28,18 @@ const Event = (eventId) => {
     const group = await groupCall.json();
     const creatorCall = await fetch('http://localhost:8000/api/users/'+event.event_creator);
     const eventCreator = await creatorCall.json();
-    const attendeeCall = await fetch('http://localhost:8000/api/attendees/');
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({"eventId": id})
+    }
+    const attendeeCall = await fetch('http://localhost:8000/api/attendees/getAttendeeInfo/', options);
     //TODO: getting the whole list, need to improve this
     const attendeeList = await attendeeCall.json();
-    const attendee = attendeeList.filter(e => e.event === id)
 
     setGroup(group);
     setGroupLoading(false);
@@ -42,10 +50,10 @@ const Event = (eventId) => {
     setEventCreator(eventCreator);
     setEventCreatorLoading(false);
 
-    setAttendee(attendee);
+    setAttendee(attendeeList.users);
     setAttendeeLoading(false);
-    console.log(attendeeList);
     console.log(attendee);
+    console.log(attendeeList.users);
     
   }
 
@@ -131,7 +139,7 @@ const Event = (eventId) => {
           </div>
           <div className="attending">
             <h4>Members Joined</h4>
-            {/* {attendee.map((member, i) => {
+             {attendee.map((member, i) => {
               if (i < 3) {
                 return (
                   <div className="member" key={member.id}>
@@ -152,8 +160,7 @@ const Event = (eventId) => {
               } else {
                 return null;
               }
-            })} */}
-            {/* May need to have user ids, and then query them to get the image and names? */}
+            })}
           </div>
         </div>
         <div className="member">

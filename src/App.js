@@ -18,9 +18,13 @@ import "./App.scss";
 const history = createBrowserHistory();
 
 function App() {
-  const [isLoggedInState, setIsLoggedInState] = useState(Cookies.get('thinklocal'));
+  const userCookie = Cookies.get('thinklocal');
+  const isCookieSet = userCookie === undefined ? false : true;
+
+  const [isLoggedInState, setIsLoggedInState] = useState(isCookieSet);
   const [zipcodeState, setZipcodeState] = useState(null);
-  const [user, setUser] = useState(JSON.parse(Cookies.get('thinklocal')));
+  const userObj = isCookieSet ? JSON.parse(userCookie) : null;
+  const [user, setUser] = useState(userObj);
 
   const providerValue = useMemo(() => ({ 
     isLoggedInState, 

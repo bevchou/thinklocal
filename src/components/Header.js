@@ -24,15 +24,6 @@ const Header = () => {
         <Link to="/">ThinkLocal</Link>
       </div>
 
-      {/* <div>
-        toggle log in
-        <input
-          type="checkbox"
-          checked={isLoggedInState}
-          onChange={(e) => updateUserState(e)}
-        />
-      </div> */}
-
       {isLoggedInState ? (
         <div className="userActions">
           <Link to="/startgroup">+ Start a group</Link>
