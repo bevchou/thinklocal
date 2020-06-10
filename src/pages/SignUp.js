@@ -81,7 +81,8 @@ const SignUp = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-    //get the user list to determine user id
+    
+      //get the user list to determine user id
     // fetch(
     //   // "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users?format=json"
     //   "http://localhost:8000/api/users/"

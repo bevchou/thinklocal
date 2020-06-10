@@ -21,14 +21,7 @@ const Event = (eventId) => {
   const {isLoggedInState, user} = useContext(UserContext);
   const history = useHistory();
 
-  const fetchInfo = async () => {
-    const apiCall = await fetch('http://localhost:8000/api/events/'+id);
-    const event = await apiCall.json();
-    const groupCall = await fetch('http://localhost:8000/api/groups/'+event.group);
-    const group = await groupCall.json();
-    const creatorCall = await fetch('http://localhost:8000/api/users/'+event.event_creator);
-    const eventCreator = await creatorCall.json();
-
+  const fetchAttendeeList = async () =>{
     const options = {
       method: "POST",
       headers: {
@@ -40,6 +33,22 @@ const Event = (eventId) => {
     const attendeeCall = await fetch('http://localhost:8000/api/attendees/getAttendeeInfo/', options);
     //TODO: getting the whole list, need to improve this
     const attendeeList = await attendeeCall.json();
+    setAttendee(attendeeList.users);
+    setAttendeeLoading(false);
+    console.log(attendee);
+    console.log(attendeeList.users);
+  }
+
+  const fetchInfo = async () => {
+
+    const apiCall = await fetch('http://localhost:8000/api/events/'+id);
+    const event = await apiCall.json();
+    const groupCall = await fetch('http://localhost:8000/api/groups/'+event.group);
+    const group = await groupCall.json();
+    const creatorCall = await fetch('http://localhost:8000/api/users/'+event.event_creator);
+    const eventCreator = await creatorCall.json();
+
+    fetchAttendeeList();
 
     setGroup(group);
     setGroupLoading(false);
@@ -49,12 +58,6 @@ const Event = (eventId) => {
 
     setEventCreator(eventCreator);
     setEventCreatorLoading(false);
-
-    setAttendee(attendeeList.users);
-    setAttendeeLoading(false);
-    console.log(attendee);
-    console.log(attendeeList.users);
-    
   }
 
   useEffect(() => {
@@ -66,17 +69,19 @@ const Event = (eventId) => {
     return(<div>Loading</div>)
   }
 
-  const handleJoinEvent = () => {
+  const handleJoinEvent = async () => {
     if(isLoggedInState){
-      const userJson = JSON.parse(user);
-      console.log(user);
-      
+      // const userJson = JSON.parse(user);
+      // const eventUserInfo = {
+      //   "event": id,
+      //   "user": userJson.pk
+      // }
       const eventUserInfo = {
         "event": id,
-        "user": userJson.pk
+        "user": user.id
       }
       console.log(eventUserInfo);
-      fetch("http://localhost:8000/api/attendees/",
+      await fetch("http://localhost:8000/api/attendees/",
       {
         method: "POST",
         headers: {
@@ -95,6 +100,7 @@ const Event = (eventId) => {
     }else{
       history.push("/Signin");
     }
+    fetchAttendeeList();
   };
 
   const handleShareEvent = () => {
