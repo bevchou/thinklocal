@@ -60,7 +60,7 @@ const SignIn = () => {
         setIsLoggedInState(true);
         console.log(JSON.stringify(responseBody))
         setUser(JSON.stringify(responseBody))
-        Cookies.set("thinklocal", JSON.stringify(responseBody), { expires: 2});
+        Cookies.set("thinklocal", JSON.stringify(responseBody), { expires: 2 });
         history.push("/");
         break;
       default:

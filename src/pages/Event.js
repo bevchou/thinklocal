@@ -116,10 +116,11 @@ const Event = (eventId) => {
             {group.group_name}
           </Link>
         </div>
-        ˘
+        
         <div className="details">
           {" "}
-          {eventObj.event_date} at {eventObj.location}
+          {eventObj.event_date} 
+          {/* at {eventObj.location} */}
         </div>
         <div className="callToAction">
           <button onClick={() => handleJoinEvent()}>Join</button>
