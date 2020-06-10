@@ -79,6 +79,10 @@
           "events": [1, 2]
         }
       ],
+      "topNeeds": [
+        "Food", "volunteers", "Donations"
+      ],
+      "linkToCommunityGuidelines": "https://docs.google.com",
       "toUrl": "/group/bedstuystrong"
     },
     {
@@ -95,6 +99,10 @@
           "events": [1, 2]
         }
       ],
+      "topNeeds": [
+        "Food", "volunteers", "Donations"
+      ],
+      "linkToCommunityGuidelines": "https://docs.google.com",
       "toUrl": "/group/detroit-community-technology-project"
     },
     {
@@ -117,6 +125,10 @@
           "events": [1, 2]
         }
       ],
+      "topNeeds": [
+        "Food", "volunteers", "Donations"
+      ],
+      "linkToCommunityGuidelines": "https://docs.google.com",
       "toUrl": "/group/your-neighbors"
     }
   ]

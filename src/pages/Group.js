@@ -11,13 +11,22 @@ const Group = (name) => {
   let groupObj = data.groups.find((group) => slugify(group.title) === title);
 
   return (
-    <div className="page">
+    <div className="groupPage">
+      <div className="groupSidebar">
+        sidebar is here
+      </div>
       <div className="group">
         <div className="title">{groupObj.title}</div>
         <div className="foundingDate">
           Group created on {groupObj.foundingDate}
         </div>
         <div className="aboutGroup">{groupObj.about}</div>
+
+        <div className="alertBox">
+          <div className="alertTitle">Alert!</div>
+          {groupObj.alert}
+        </div>
+
         {groupObj.initiatives.map((initiative) => (
           <div className="initiative" key={initiative.title}>
             <Link
@@ -41,6 +50,24 @@ const Group = (name) => {
             </Link>
           </div>
         ))}
+
+        <div className="additionalInfoBoxes">
+          <div className="topNeeds">
+            <div className="topNeedsTitle">Top Needs</div>
+            <ul>
+              {groupObj.topNeeds.map((need) => (
+                <li key={need}>{need}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="getStarted" onClick={() => window.open(groupObj.linkToCommunityGuidelines)}>
+            <div className="getStartedTitle">How to get started</div>
+            Community guidelines and onboarding
+          </div>
+        </div>
+
+        
+
       </div>
     </div>
   );
