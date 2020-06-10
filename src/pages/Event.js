@@ -1,20 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Event.scss";
 import data from "../data/dummyData.json";
 import { slugify } from "../slugify";
 
+import ShareModal from "../components/ShareModal";
+import JoinModal from "../components/JoinModal";
+
 const Event = (eventId) => {
   let id = eventId.match.params.eventId;
   let eventObj = data.events.find((event) => event.id === +id);
+  const [modalState, setModalState] = useState(null);
+  // const [modalState, setModalState] = useState("share");
 
   const handleJoinEvent = () => {
     console.log("you joined the event");
+    setModalState("join");
   };
 
   const handleShareEvent = () => {
     console.log("share options");
+    setModalState("share");
   };
 
   const handleShowMemberList = () => {
@@ -23,6 +30,9 @@ const Event = (eventId) => {
 
   return (
     <div className="page">
+      {modalState === "share" ? <ShareModal linksToShare={eventObj.shareLinks} setModalState={setModalState}/> : null}
+      {modalState === "join" ? <JoinModal setModalState={setModalState}/> : null}
+
       <div className="event">
         <div className="title">{eventObj.title}</div>
         <div className="community">
