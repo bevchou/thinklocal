@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Group from "./pages/Group";
 import About from "./pages/About";
+import StartGroup from "./pages/StartGroup";
 
 import Header from "./components/Header";
 import Cookies from 'js-cookie';
@@ -49,6 +50,7 @@ function App() {
               )}
             />
             <Route exact path="/about" component={About} />
+            <Route exact path="/startgroup" component={StartGroup} />
             <Route 
               exact 
               path="/signin" 

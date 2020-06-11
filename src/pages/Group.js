@@ -27,7 +27,7 @@ const Group = (name) => {
       <div className="group">
         <div className="title">{groupObj.group_name}</div>
         <div className="foundingDate">
-          Group created on {groupObj.create_date}
+          Group created on {new Date(Date.parse(groupObj.create_date)).toLocaleString()}
         </div>
         
       </div>

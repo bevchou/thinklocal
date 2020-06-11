@@ -16,6 +16,7 @@ const Header = () => {
     setUser(null);
     setIsLoggedInState(false);
     Cookies.remove("thinklocal");
+    history.push("/");
   }
   return (
 

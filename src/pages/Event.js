@@ -125,7 +125,7 @@ const Event = (eventId) => {
         
         <div className="details">
           {" "}
-          {eventObj.event_date} 
+          {new Date(Date.parse(eventObj.event_date)).toLocaleString()} 
           {/* at {eventObj.location} */}
         </div>
         <div className="callToAction">
