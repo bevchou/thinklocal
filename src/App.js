@@ -22,7 +22,7 @@ function App() {
 
   return (
     <>
-      <Router history={history} basename="/demo">
+      <Router history={history} basename="/demo-static">
           <Header
             isLoggedInState={isLoggedInState}
             setIsLoggedInState={setIsLoggedInState}

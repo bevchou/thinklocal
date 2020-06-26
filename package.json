@@ -1,6 +1,6 @@
 {
   "name": "thinklocal",
-  "homepage": "http://thinklocalapp.org/demo/",
+  "homepage": "http://thinklocalapp.org/demo-static/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

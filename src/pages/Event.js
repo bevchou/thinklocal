@@ -41,7 +41,6 @@ const Event = (eventId) => {
             {eventObj.community}
           </Link>
         </div>
-        ˘
         <div className="details">
           {" "}
           {eventObj.date} at {eventObj.location}
