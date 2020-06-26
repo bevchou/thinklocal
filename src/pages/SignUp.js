@@ -50,8 +50,8 @@ const SignUp = () => {
     e.preventDefault();
     // POST new user data
     fetch(
-      // "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/",
-      "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/",
+      // "https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/users/",
+      "https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/users/",
       {
         method: "POST",
         headers: {
@@ -84,7 +84,7 @@ const SignUp = () => {
     
       //get the user list to determine user id
     // fetch(
-    //   // "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users?format=json"
+    //   // "https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/users?format=json"
     //   "http://localhost:8000/api/users/"
     // )
     //   .then((response) => response.json())
@@ -96,7 +96,7 @@ const SignUp = () => {
 
     //     // POST new user data
     //     fetch(
-    //       // "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/",
+    //       // "https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/users/",
     //       "http://localhost:8000/api/users/",
     //       {
     //         method: "POST",

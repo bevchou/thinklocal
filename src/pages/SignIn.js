@@ -36,7 +36,7 @@ const SignIn = () => {
       body: JSON.stringify(loginInfoState)
     }
     //ADD CODE TO AUTHENTICATE
-    const loginCall = await fetch("http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/check_password/",options)
+    const loginCall = await fetch("https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/users/check_password/",options)
     .then((response) => {
       console.log(response);
       if(response.ok){
