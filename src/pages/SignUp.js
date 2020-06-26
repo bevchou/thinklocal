@@ -51,7 +51,7 @@ const SignUp = () => {
     // POST new user data
     fetch(
       // "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/",
-      "http://localhost:8000/api/users/",
+      "http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/",
       {
         method: "POST",
         headers: {

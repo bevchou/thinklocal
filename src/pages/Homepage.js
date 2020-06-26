@@ -15,7 +15,7 @@ const Homepage = ({zipcodeState, setZipcodeState }) => {
   const {isLoggedInState, setIsLoggedInState, user, setUser} = useContext(UserContext);
 
   const fetchEvents = async () => {
-    const apiCall = await fetch('http://localhost:8000/api/events?format=json');
+    const apiCall = await fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/events?format=json');
     const events = await apiCall.json();
     setEvents(events);
     setEventsLoading(false);
@@ -23,7 +23,7 @@ const Homepage = ({zipcodeState, setZipcodeState }) => {
   }
 
   const fetchGroups = async () =>{
-    const apiCall = await fetch('http://localhost:8000/api/groups?format=json');
+    const apiCall = await fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/groups?format=json');
     const groups = await apiCall.json();
     setGroups(groups);
     setGroupsLoading(false);

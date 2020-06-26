@@ -51,7 +51,7 @@ const StartGroup = () => {
         },
         body: JSON.stringify(groupObj),
       }
-      fetch("http://localhost:8000/api/groups/", options)
+      fetch("http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/groups/", options)
       .then((response) => {
         console.log(response)
           if(response.ok){

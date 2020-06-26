@@ -38,12 +38,3 @@ const TileGroup = ({ groupName, tileArray }) => {
 };
 
 export default TileGroup;
-// {tileArray.map((tile) => 
-//   <Tile
-//   title={tile.event_title}
-//   key={tile.event_title + tile.id}
-//   date={tile.event_date}
-//   imgSrc= {"https://picsum.photos/200"}
-//   toUrl={tile.toUrl}
-//   eventId={tile.id}
-// />)}

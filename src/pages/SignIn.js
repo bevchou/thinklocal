@@ -36,7 +36,7 @@ const SignIn = () => {
       body: JSON.stringify(loginInfoState)
     }
     //ADD CODE TO AUTHENTICATE
-    const loginCall = await fetch("http://127.0.0.1:8000/api/users/check_password/",options)
+    const loginCall = await fetch("http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/check_password/",options)
     .then((response) => {
       console.log(response);
       if(response.ok){
