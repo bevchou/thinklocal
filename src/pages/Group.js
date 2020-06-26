@@ -16,7 +16,7 @@ const Group = (name) => {
   const [initativeLoading, setIntativeLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/groups/'+title+'/?format=json')
+    fetch('https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/groups/'+title+'/?format=json')
     .then(response => response.json())
     .then(data => {
       setGroup(data);
@@ -34,7 +34,7 @@ const Group = (name) => {
     body: JSON.stringify({'groupId': title})
   }
   useEffect(() => {
-    fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/initiatives/getInitiatives/', options)
+    fetch('https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/initiatives/getInitiatives/', options)
     .then(response => response.json())
     .then(data => {
       console.log("data",data);

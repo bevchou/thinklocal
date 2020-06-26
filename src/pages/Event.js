@@ -35,7 +35,7 @@ const Event = (eventId) => {
       },
       body: JSON.stringify({"eventId": id})
     }
-    const attendeeCall = await fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/attendees/getAttendeeInfo/', options);
+    const attendeeCall = await fetch('https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/attendees/getAttendeeInfo/', options);
     //TODO: getting the whole list, need to improve this
     const attendeeList = await attendeeCall.json();
     setAttendee(attendeeList.users);
@@ -46,11 +46,11 @@ const Event = (eventId) => {
 
   const fetchInfo = async () => {
 
-    const apiCall = await fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/events/'+id);
+    const apiCall = await fetch('https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/events/'+id);
     const event = await apiCall.json();
-    const groupCall = await fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/groups/'+event.group);
+    const groupCall = await fetch('https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/groups/'+event.group);
     const group = await groupCall.json();
-    const creatorCall = await fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/'+event.event_creator);
+    const creatorCall = await fetch('https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/users/'+event.event_creator);
     const eventCreator = await creatorCall.json();
 
     fetchAttendeeList();
@@ -86,7 +86,7 @@ const Event = (eventId) => {
         "user": user.id
       }
       console.log(eventUserInfo);
-      await fetch("http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/attendees/",
+      await fetch("https://thinklocal-ec2-alb-2033741287.us-west-1.elb.amazonaws.com/api/attendees/",
       {
         method: "POST",
         headers: {
