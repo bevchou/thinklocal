@@ -74,6 +74,7 @@ const StartGroup = () => {
   return(
     <div className="startgroup">
     <h1>Start Your Group</h1>
+  {/* <pre>{user.pk}{user.fields.user_name}</pre> */}
 
     <Form onSubmit={(e) => handleSubmit(e)}>
       <Form.Group controlId="formName">

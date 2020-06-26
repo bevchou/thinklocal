@@ -3,7 +3,6 @@ import { UserContext } from "../UserContext";
 
 import "./Homepage.scss";
 // import data from "../data/dummyData.json";
-
 import TileGroup from "../components/TileGroup";
 
 const Homepage = ({zipcodeState, setZipcodeState }) => {
