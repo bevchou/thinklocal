@@ -51,16 +51,24 @@ const Group = (name) => {
   }
 
   return (
-    <div className="page">
+    <div className="groupPage">
+      <div className="groupSidebar">
+        sidebar is here
+      </div>
       <div className="group">
         <div className="title">{groupObj.group_name}</div>
         <div className="foundingDate">
           Group created on {new Date(Date.parse(groupObj.create_date)).toLocaleString()}
         </div>
+        <div className="aboutGroup">{groupObj.about}</div>
 
-        {/* <div className="aboutGroup">{groupObj.about}</div>  */}
-        {groupInitatives.map((initiative) => (
-          <div className="initiative" key={initiative.name}>
+        <div className="alertBox">
+          <div className="alertTitle">Alert!</div>
+          {groupObj.alert}
+        </div>
+
+        {groupObj.initiatives.map((initiative) => (
+          <div className="initiative" key={initiative.title}>
             <Link
               to={
                 "/group/" +
@@ -81,8 +89,26 @@ const Group = (name) => {
                   created on {new Date(Date.parse(initiative.fields.create_date)).toLocaleString()}
               </div>
             </Link>
-            </div>
-          ))}
+          </div>
+        ))}
+
+        <div className="additionalInfoBoxes">
+          <div className="topNeeds">
+            <div className="topNeedsTitle">Top Needs</div>
+            <ul>
+              {groupObj.topNeeds.map((need) => (
+                <li key={need}>{need}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="getStarted" onClick={() => window.open(groupObj.linkToCommunityGuidelines)}>
+            <div className="getStartedTitle">How to get started</div>
+            Community guidelines and onboarding
+          </div>
+        </div>
+
+        
+
       </div>
     </div>
   );
