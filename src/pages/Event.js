@@ -6,6 +6,9 @@ import "./Event.scss";
 // import data from "../data/dummyData.json";
 // import { slugify } from "../slugify";
 
+import ShareModal from "../components/ShareModal";
+import JoinModal from "../components/JoinModal";
+
 const Event = (eventId) => {
   let id = parseInt(eventId.match.params.eventId);
   // let eventObj = data.events.find((event) => event.id === +id);
@@ -17,6 +20,8 @@ const Event = (eventId) => {
   const [eventCreatorLoading, setEventCreatorLoading] = useState(true);
   const [attendee, setAttendee] = useState([]);
   const [attendeeLoading, setAttendeeLoading] = useState(true);
+
+  const [modalState, setModalState] = useState(null);
 
   const {isLoggedInState, user} = useContext(UserContext);
   const history = useHistory();
@@ -105,6 +110,7 @@ const Event = (eventId) => {
 
   const handleShareEvent = () => {
     console.log("share options");
+    setModalState("share");
   };
 
   const handleShowMemberList = () => {
@@ -113,6 +119,9 @@ const Event = (eventId) => {
   
   return (
     <div className="page">
+      {modalState === "share" ? <ShareModal linksToShare={eventObj.shareLinks} setModalState={setModalState}/> : null}
+      {modalState === "join" ? <JoinModal setModalState={setModalState}/> : null}
+
       <div className="event">
         <div className="title">{eventObj.event_title}</div>
         <div className="community">
