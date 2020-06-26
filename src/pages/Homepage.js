@@ -1,12 +1,40 @@
-import React from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { UserContext } from "../UserContext";
 
 import "./Homepage.scss";
-import data from "../data/dummyData.json";
-
+// import data from "../data/dummyData.json";
 import TileGroup from "../components/TileGroup";
 
-const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
+const Homepage = ({zipcodeState, setZipcodeState }) => {
   let zipcodeInput;
+  const [events, setEvents] = useState([]);
+  const [groups, setGroups] = useState([]);
+  const [groupsLoading, setGroupsLoading] = useState(true);
+  const [eventsLoading, setEventsLoading] = useState(true);
+
+  const {isLoggedInState, setIsLoggedInState, user, setUser} = useContext(UserContext);
+
+  const fetchEvents = async () => {
+    const apiCall = await fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/events?format=json');
+    const events = await apiCall.json();
+    setEvents(events);
+    setEventsLoading(false);
+    console.log(events);
+  }
+
+  const fetchGroups = async () =>{
+    const apiCall = await fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/groups?format=json');
+    const groups = await apiCall.json();
+    setGroups(groups);
+    setGroupsLoading(false);
+    console.log(groups);
+  }
+
+  useEffect(() => {
+    fetchEvents();
+    fetchGroups();
+  }, []);
+  
   const getZipcodeInput = (e) => {
     zipcodeInput = e.target.value;
     console.log(zipcodeInput);
@@ -25,9 +53,9 @@ const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
     }
   };
 
-  // fetch('http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/events?format=json')
-  // .then(response => response.json())
-  // .then(data => console.log(data));
+  if( eventsLoading === true || groupsLoading === true){
+    return(<div>Loading</div>)
+  }
 
   return (
     <div className="page">
@@ -38,6 +66,8 @@ const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
             Want to help but don’t know where to start? ThinkLocal is a platform
             that makes civic engagement easier. Organize or find existing
             organizations and causes in your community.
+            {console.log("UserContext", UserContext)
+            }
           </p>
           {zipcodeState || isLoggedInState ? (
             <div />
@@ -68,13 +98,13 @@ const Homepage = ({ isLoggedInState, zipcodeState, setZipcodeState }) => {
           groupName={
             (zipcodeState || isLoggedInState ? "Local " : "") + "Events"
           }
-          tileArray={data.events}
+          tileArray={events}
         />
         <TileGroup
           groupName={
             (zipcodeState || isLoggedInState ? "Local " : "") + "Groups"
           }
-          tileArray={data.groups}
+          tileArray={groups}
         />
       </div>
     </div>

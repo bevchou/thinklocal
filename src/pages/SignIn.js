@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext} from "react";
+import { Link, useHistory } from "react-router-dom";
+import { UserContext } from "../UserContext";
+import Cookies from 'js-cookie';
 
 import "./SignInSignUp.scss";
 
@@ -12,6 +14,9 @@ const SignIn = () => {
     password: null,
   });
 
+  const {setIsLoggedInState, setUser} = useContext(UserContext);
+  const history = useHistory();
+
   const handleInput = (e) => {
     setLoginInfoState({
       ...loginInfoState,
@@ -19,16 +24,53 @@ const SignIn = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log('authenticate/sign in')
+    let responseBody; 
+    const options = {
+      method: "POST",
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginInfoState)
+    }
     //ADD CODE TO AUTHENTICATE
+    const loginCall = await fetch("http://ec2-54-193-65-86.us-west-1.compute.amazonaws.com:8000/api/users/check_password/",options)
+    .then((response) => {
+      console.log(response);
+      if(response.ok){
+        return response.json();
+      }else{
+        throw new Error("Error in authentication")
+      }
+    })
+    .then(status => {
+      console.log(status);
+      responseBody = status
+    });
+
+    switch(responseBody.status){
+      case "password does not match":
+        console.log(responseBody);
+        break;
+      case "password matches":
+        console.log(responseBody);
+        //update the user state to loggedIn
+        setIsLoggedInState(true);
+        console.log(JSON.stringify(responseBody))
+        setUser(JSON.stringify(responseBody))
+        Cookies.set("thinklocal", JSON.stringify(responseBody), { expires: 2 });
+        history.push("/");
+        break;
+      default:
+        console.log(responseBody);
+    }
   };
 
   return (
     <div className="signin">
       <h1>Sign In</h1>
-
       <p>
         (or <Link to="/signup">create an account!</Link>)
       </p>

@@ -1,0 +1,11 @@
+.startgroup{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    form{
+        width: 30%;
+        textarea{
+            min-height: 150px;
+        }
+    }
+}
