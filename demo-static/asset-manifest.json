@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/demo-static/static/css/main.6bd2b0fd.chunk.css",
+    "main.js": "/demo-static/static/js/main.f5e0e213.chunk.js",
+    "main.js.map": "/demo-static/static/js/main.f5e0e213.chunk.js.map",
+    "runtime-main.js": "/demo-static/static/js/runtime-main.4bddb417.js",
+    "runtime-main.js.map": "/demo-static/static/js/runtime-main.4bddb417.js.map",
+    "static/js/2.1bffe623.chunk.js": "/demo-static/static/js/2.1bffe623.chunk.js",
+    "static/js/2.1bffe623.chunk.js.map": "/demo-static/static/js/2.1bffe623.chunk.js.map",
+    "index.html": "/demo-static/index.html",
+    "precache-manifest.ab41ab75362e752a376c6fc917ed4ac8.js": "/demo-static/precache-manifest.ab41ab75362e752a376c6fc917ed4ac8.js",
+    "service-worker.js": "/demo-static/service-worker.js",
+    "static/css/main.6bd2b0fd.chunk.css.map": "/demo-static/static/css/main.6bd2b0fd.chunk.css.map",
+    "static/js/2.1bffe623.chunk.js.LICENSE.txt": "/demo-static/static/js/2.1bffe623.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/demo-static/static/media/RobotoMono-Regular.b4618f1f.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4bddb417.js",
+    "static/js/2.1bffe623.chunk.js",
+    "static/css/main.6bd2b0fd.chunk.css",
+    "static/js/main.f5e0e213.chunk.js"
+  ]
+}
